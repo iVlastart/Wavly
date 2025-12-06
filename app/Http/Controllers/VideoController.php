@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class VideoController extends Controller
@@ -28,7 +29,14 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = $request->validate([
+            'src' => 'required|file|mimetypes:video/mp4|max:5120000',
+            'title' => 'required|string|max:500',
+            'visibility' => 'required|in:public,private',
+        ]);
+
+        $reqFile = $request->file('src');
+        $outputDir = storage_path('app/public/videos/'.$data['title'].'-'.Auth::user()->name);
     }
 
     /**

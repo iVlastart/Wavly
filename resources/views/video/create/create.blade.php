@@ -30,10 +30,10 @@
                                 
 
                         <div class="mt-4">
-                            <x-input-label for="visibility" :value="__('Visibility')" class="mb-1"/>
-                            <select id="visibility" name="visibility" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <option value="public">Public</option>
-                                <option value="private">Private</option>
+                            <x-input-label for="Visibility" :value="__('Visibility')" class="mb-1"/>
+                            <select id="Visibility" name="visibility" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option value="public">{{__('Public')}}</option>
+                                <option value="private">{{__('Private')}}</option>
                             </select>
                         </div>
                                 
