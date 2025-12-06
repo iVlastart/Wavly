@@ -14,6 +14,13 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+    public function index(string $username):View
+    {
+        return view('profile.home', [
+            'username' => $username,
+        ]);
+    }
     public function edit(Request $request): View
     {
         return view('profile.edit', [
