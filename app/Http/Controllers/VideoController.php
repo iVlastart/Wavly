@@ -34,9 +34,18 @@ class VideoController extends Controller
             'title' => 'required|string|max:500',
             'visibility' => 'required|in:public,private',
         ]);
-
+        $vidPath = 'videos/'.$data['title'].'-'.Auth::user()->name;
         $reqFile = $request->file('src');
-        $outputDir = storage_path('app/public/videos/'.$data['title'].'-'.Auth::user()->name);
+        $outputDir = storage_path('app/public/'.$vidPath);
+
+        if(!file_exists($outputDir)){
+            mkdir($outputDir, 0777, true);
+        }
+
+        $filenameWithoutExt = pathinfo($reqFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $filename = $filenameWithoutExt.'.mp4';
+        $reqFile->move($outputDir, $filename);
+        $data['src'] = $vidPath.'/'.$filename;
     }
 
     /**
