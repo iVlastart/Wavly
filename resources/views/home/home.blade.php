@@ -6,9 +6,11 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg flex justify-center items-center">
-                
+        <div class="max-w-7xl w-full h-full mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg h-full w-full flex justify-center items-center">
+                <div class="border border-b">
+                    
+                </div>
             </div>
         </div>
     </div> 

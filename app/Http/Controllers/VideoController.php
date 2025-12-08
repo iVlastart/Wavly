@@ -49,6 +49,7 @@ class VideoController extends Controller
         $filename = $filenameWithoutExt.'.mp4';
         $reqFile->move($outputDir, $filename);
         $data['src'] = $vidPath.'/'.$filename;
+        
 
         FFMpeg::fromDisk('public')
             ->open($data['src'])
