@@ -9,7 +9,7 @@
         <div class="max-w-7xl w-full h-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg h-full w-full flex justify-center items-center">
                 <div class="border border-b">
-                    
+                    @include('home.partials.video', ['video' => $video])
                 </div>
             </div>
         </div>

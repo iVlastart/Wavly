@@ -9,7 +9,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home.home');
+    $video = \App\Models\Video::inRandomOrder()->first();
+    return view('home.home')->with('video', $video);
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::middleware('auth')->group(function () {
