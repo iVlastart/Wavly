@@ -23,7 +23,7 @@
                                 
                         <div class="mt-4">
                             <x-input-label for="Title" :value="__('Title')"/>
-                            <x-textarea-input name="title" id="Title" class="block mt-1 w-full" :value="__('')"
+                            <x-textarea-input name="title" id="Title" class="block mt-1 w-full resize-none h-32" :value="__('')"
                                      maxlength="500"/>
                             <x-input-error :messages="$errors->get('descr')" class="mt-2"/>
                         </div>

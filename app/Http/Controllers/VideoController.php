@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
+use FFMpeg\Format\Video\X264;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
 class VideoController extends Controller
 {
@@ -46,6 +49,17 @@ class VideoController extends Controller
         $filename = $filenameWithoutExt.'.mp4';
         $reqFile->move($outputDir, $filename);
         $data['src'] = $vidPath.'/'.$filename;
+
+        FFMpeg::fromDisk('public')
+            ->open($data['src'])
+            ->getFrameFromSeconds(0)
+            ->export()
+            ->toDisk('public')
+            ->save('thumbnail.webp');
+        
+        $data['user_id'] = Auth::id();
+        Video::create($data);
+        return redirect()->route('home')->with('success', 'Video uploaded successfully.');
     }
 
     /**
