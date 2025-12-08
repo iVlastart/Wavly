@@ -55,7 +55,7 @@ class VideoController extends Controller
             ->getFrameFromSeconds(0)
             ->export()
             ->toDisk('public')
-            ->save('thumbnail.webp');
+            ->save($vidPath.'/'.$filename.'-preview.webp');
         
         $data['user_id'] = Auth::id();
         Video::create($data);
