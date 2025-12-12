@@ -1,4 +1,8 @@
+@props(['id'=>null])
 <x-item-outline>
-    @include('home.partials.svg.heart')
-    <span>0</span>
+    <form action="/like" method="post" id="likeForm" data-id="">
+        @csrf
+        @include('home.partials.svg.heart')
+        <span>0</span>
+    </form>
 </x-item-outline>

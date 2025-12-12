@@ -4,6 +4,6 @@
         <p>No video available.</p>
     @else
         @include('home.partials.video-player', ['url'=>$video->src])
-        @include('home.partials.right-panel')
+        @include('home.partials.right-panel', ['video'=>$video])
     @endif
 </div>
