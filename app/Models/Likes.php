@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Likes extends Model
 {
-    protected $table = 'likes';
+    use HasFactory;
 
     protected $fillable = [
         'user_id',
         'video_id',
     ];
+
+    public $timestamps = false;
 
     public function user()
     {

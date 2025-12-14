@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 $(document).ready(function(){
+    alert('loaded');
     $('#uploadForm').on('submit', function(e){
         e.preventDefault();
 

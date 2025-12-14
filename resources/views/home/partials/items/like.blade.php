@@ -1,8 +1,8 @@
 @props(['id'=>null])
+@vite(['resources/js/like.js'])
 <x-item-outline>
-    <form action="/like" method="post" id="likeForm" data-id="">
-        @csrf
+    <span id="likeSpan" data-id="{{ $id }}">
         @include('home.partials.svg.heart')
         <span>0</span>
-    </form>
+    </span>
 </x-item-outline>

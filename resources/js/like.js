@@ -1,15 +1,23 @@
 import $ from 'jquery';
 
 $(document).ready(function(){
-    $('#likeForm').on('submit', function(e){
+    $('#likeSpan').on('click', function(e){
         e.preventDefault();
-        const data = new FormData(this);
-        const id = $('#likeForm').data('id');
+        const id = $('#likeSpan').data('id');
+        alert(id)
         if(id===null) return;
         $.ajax({
             type: 'POST',
-            url: `/like/${id}`,
-            data: data,
+            url: `/like`,
+            data: {
+                id: id
+            },
+            success: function(resp){
+                alert(JSON.stringify(resp));
+            },
+            error: function(err){
+                alert(err);
+            }
         })
     });
 });

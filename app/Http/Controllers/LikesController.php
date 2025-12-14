@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Likes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
@@ -49,9 +51,33 @@ class LikesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $data = $request->validate([
+            'id'=>'required|integer|exists:videos,id',
+        ]);
+        $liked = false;
+        $like = Likes::where('video_id',$data['id'])
+                    ->where('user_id', Auth::id())
+                    ->exists();
+        if($like)
+        {
+            //the like exists, needs removal
+            $like->delete();
+        }
+        else
+        {
+            //the like does not exist, needs addition
+            Likes::create([
+                'video_id' => $data['id'],
+                'user_id' => Auth::id(),
+            ]);
+            $liked = true;
+        }
+
+        return response()->json([
+            'liked'=>$liked,
+        ]);
     }
 
     /**
