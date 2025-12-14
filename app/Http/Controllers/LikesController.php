@@ -59,7 +59,7 @@ class LikesController extends Controller
         $liked = false;
         $like = Likes::where('video_id',$data['id'])
                     ->where('user_id', Auth::id())
-                    ->exists();
+                    ->first();
         if($like)
         {
             //the like exists, needs removal

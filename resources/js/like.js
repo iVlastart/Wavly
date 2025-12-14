@@ -15,9 +15,11 @@ $(document).ready(function(){
                 id: id
             },
             success: function(resp){
+                alert(JSON.stringify(resp));
             },
             error: function(err){
                 alert(JSON.stringify(err));
+                //alert('Unable to like the video')
             }
         })
     });
