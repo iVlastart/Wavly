@@ -3,7 +3,8 @@ import $ from 'jquery';
 $(document).ready(function(){
     $('#likeSpan').on('click', function(e){
         e.preventDefault();
-        const id = $('#likeSpan').data('id');
+        const likeSpan = $('#likeSpan')
+        const id = likeSpan.data('id');
         if(id===null) return;
         $.ajax({
             type: 'POST',
@@ -15,11 +16,12 @@ $(document).ready(function(){
                 id: id
             },
             success: function(resp){
-                alert(JSON.stringify(resp));
+                const isLiked = resp.liked;
+                const svg = likeSpan.find('svg path');
+                svg.attr('fill', resp.liked ? 'currentColor' : 'white');
             },
             error: function(err){
-                alert(JSON.stringify(err));
-                //alert('Unable to like the video')
+                alert('Unable to like the video');
             }
         })
     });
