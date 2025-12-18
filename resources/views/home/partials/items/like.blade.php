@@ -2,7 +2,7 @@
 @vite(['resources/js/like.js'])
 <x-item-outline>
     <span id="likeSpan" data-id="{{ $id }}">
-        @include('home.partials.svg.heart')
+        @include('home.partials.svg.heart', ['id'=>$id])
         <span>0</span>
     </span>
 </x-item-outline>
