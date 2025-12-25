@@ -19,6 +19,11 @@ $(document).ready(function(){
                 const isLiked = resp.liked;
                 const svg = likeSpan.find('svg path');
                 svg.attr('fill', resp.liked ? 'currentColor' : 'white');
+                const likeCountSpan = $('#likeCount');
+                let likeCount = parseInt(likeCountSpan.text());
+                likeCount = isLiked ? likeCount + 1 : likeCount - 1;
+                if(likeCount < 0) likeCount = 0;
+                likeCountSpan.text(likeCount);
             },
             error: function(err){
                 alert('Unable to like the video');
