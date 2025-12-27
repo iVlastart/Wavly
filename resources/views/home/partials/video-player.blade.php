@@ -2,7 +2,7 @@
 @vite(['resources/js/video-player.js'])
 <div class="relative w-80 h-full">
     <video
-        class="h-full w-80 rounded-md object-cover"
+        class="h-full w-80 rounded-md object-fit"
         src="{{ asset('storage/' . rawurlencode($url)) }}"
         type="video/mp4"
     ></video>
