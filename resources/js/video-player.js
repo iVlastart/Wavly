@@ -1,10 +1,10 @@
 const video = document.querySelector('video');
 
 document.addEventListener('DOMContentLoaded', () => {
-    togglePlayIcon();
     video.play().catch(error => {
         console.error('Error attempting to play the video:', error);
     });
+    togglePlayIcon(); 
     video.loop = true;
     video.addEventListener('click', togglePlay);
     document.addEventListener('keydown', function(e) {handleKeydown(e);});
