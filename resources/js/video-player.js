@@ -1,6 +1,7 @@
 const video = document.querySelector('video');
 
 document.addEventListener('DOMContentLoaded', () => {
+    togglePlayIcon();
     video.play().catch(error => {
         console.error('Error attempting to play the video:', error);
     });
@@ -30,4 +31,10 @@ function handleKeydown(e)
 
 function togglePlay(){
     video.paused ? video.play() : video.pause();
+    togglePlayIcon();
+}
+
+function togglePlayIcon(){
+    const playIcon = document.getElementById('play-icon');
+    video.paused ? playIcon.classList.remove('hidden') : playIcon.classList.add('hidden');
 }
